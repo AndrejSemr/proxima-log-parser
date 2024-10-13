@@ -1,0 +1,101 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.settingsPart {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: darkgray;
+}
+
+.log-container {
+    padding: 10px;
+    background-color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+}
+
+.filterBlock {
+    padding-top: 3px;
+    margin-top: 5px;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    padding-left: 20px;
+    background-color: gray;
+    color: white;
+}
+
+
+.meAction {
+    color: rgba(147,112,219,1);
+}
+.justText{
+    color: rgba(255,255,255,1);
+}
+.Whisper {
+    color: rgba(170,170,170,1);
+}
+.doName {
+    color: rgba(255,255,255,1);
+}
+.doText {
+    color: rgba(255,128,0,1);
+}
+.ToDoText {
+    color: rgba(255,255,255,1);
+}
+.ToDoAction {
+    color: rgba(147,112,219,1);
+}
+.oocChat{
+    color: rgba(138,116,112,1);
+}
+.RCLocal {
+    color: rgba(5,255,251,1);
+}
+.RCGeneral{
+    color: rgba(65,205,255,1);
+}
+.DepRADIO {
+    color: rgba(222,61,77,1);
+}
+.ADDska {
+    color: rgba(81,217,81,1);
+}
+.SMS {
+    color: rgba(255, 255, 0,1);
+}
+.Scream {
+    color: rgba(255,255,255,1);
+}
+.News{
+    color: rgba(53, 78, 219,1);
+}
+.Phone{
+    color: rgba(255,255,255,1);
+}
+
+
+.green-button {
+    background: linear-gradient(145deg, #32a852, #28a745);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 10px 15px;
+    font-size: 15px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.green-button:hover {
+    background: linear-gradient(145deg, #28a745, #32a852);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+.green-button:active {
+    background: linear-gradient(145deg, #28a745, #238636);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}

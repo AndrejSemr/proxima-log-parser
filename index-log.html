@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Парсинг лога</title>
+    <link rel="stylesheet" href="styles-log.css">
+</head>
+<body>
+    <div class="settingsPart">
+        <h1>Log Viewer</h1>
+        
+        <!-- Загрузки файла -->
+        <input type="file" id="logFileInput" accept=".log" class="green-button"> <button class="green-button" onclick="ReadLogFile()">Читать файл</button>
+        <br><br>
+        <div class="filterBlock">
+            <p>Выберите тип регистрации вашего лога:</p>
+            <input type="radio" id="full-log-radio" name="drone" value="full"/><label for="huey">[2024-10-06 00:33:54] [Output] : [00:33:54]</label><br>
+            <input type="radio" id="short-log-radio" name="drone" value="short" /><label for="huey">[00:33:54]</label>
+        </div>
+        <hr>
+        <!-- Фильтр по Никам -->
+        <div class="filterBlock">
+            <label for="keywordsInput">Имена участников ситуации (разделить участников запятой <b>','</b>):</label>
+            <input type="text" id="keywordsInput">
+        </div>
+        <!-- Фильтр по времени -->
+        <div class="filterBlock">
+            <label for="timeLogFilterStart">Фильтр по времени (<i>00-12 AM | 13-23 PM</i>):</label>
+            <input type="datetime-local" id="timeLogFilterStart">
+            <label> - </label>
+            <input type="datetime-local" id="timeLogFilterEnd">
+        </div>
+        <!-- Фильтр показать ли время в чате -->
+        <div class="filterBlock">
+            <label for="showTimeCheckbox">Показать время (легче указать диапазон времени):</label>
+            <input type="checkbox" id="showTimeCheckbox">
+        </div>
+        <!-- Убрать лишние строки -->
+        <div class="filterBlock">
+            <p>Отмеченый галочкой ниже чат <b>НЕ БУДЕТ</b> отображаться в логе</p>
+            <label>
+                <input type="checkbox" id="filterOOCChatCheckbox" > Убрать OOC чат (/b) </input>
+            </label>
+            <label>
+                <input type="checkbox" id="filterADDskaCheckbox" > Убрать Реклама (Adds) </input>
+            </label>
+            <label>
+                <input type="checkbox" id="filterSMSCheckbox" > Убрать SMS </input>
+            </label>
+        </div>
+         <!-- Изменение размера чата -->
+        <div class="filterBlock">
+            <label for="fontSizeTextLabel">Укажите размер в пикселях (<i>по стандарту 18 пикселей</i>):</label>
+            <input type="number" id="fontSizeTextLlb" value="18">
+            <button id="fontSizeTextButton" class="green-button">Применить</button>
+        </div>
+        <button id="filterButton" class="green-button">Применить</button>
+        <hr>
+
+    </div>
+    
+    <!-- Контейнер для вывода логов -->
+    <div class="log-container" id="logContainer"></div>
+
+    <script src="script-log.js"></script>
+</body>
+</html>
