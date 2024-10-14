@@ -2,9 +2,12 @@ let mainLogJSON = [];
 let ConsoleLogLogPartRegEx = "";
 const CURRENTDATE = new Date();
 let FONTSIZE = 18;
+let ISTEXTBOLD = false;
 
 document.getElementById('filterButton').addEventListener('click', ApplyFilters);
 document.getElementById('fontSizeTextButton').addEventListener('click', ApplyFontSize);
+document.getElementById('showBoldCheckbox').addEventListener('change', function(event){MakeTextBold()})
+
 
 function ReadLogFile() {
     mainLogJSON = [];
@@ -59,10 +62,11 @@ function PrepareLog(content){
 function DisplayLog(content) {
     const logContainer = document.getElementById('logContainer');
     logContainer.innerHTML = ''; // Очищаем контейнер
+    
 
     // Показывать время или нет
     let applyTimestamp = document.getElementById('showTimeCheckbox').checked;
-    
+
     // Добавляем каждую строку как отдельный элемент
     if(applyTimestamp){
         content.forEach((line, index) => {
@@ -217,6 +221,20 @@ function ParseLogGetDateAndText(logEntry,logType) {
     }
 }
 
+function MakeTextBold(){
+    let checkboxValue = document.getElementById('showBoldCheckbox').checked;
+    if(ISTEXTBOLD == checkboxValue) return;
+    ISTEXTBOLD = checkboxValue;
+
+    if(ISTEXTBOLD){
+        document.getElementById('logContainer').style.fontWeight = "bold";
+        return;
+    }
+
+    document.getElementById('logContainer').style.fontWeight = "normal";
+    return;
+
+}
 
 // Функция определяет тип лога
 function IdentifyLineType(line){
@@ -249,6 +267,10 @@ function IdentifyLineType(line){
             return "Megaphone";
         case regEx_Phone_Pattern(line):
             return "Phone";
+        case regEx_NewsRadio_Pattern(line):
+            return "NewsRadio"
+        case regEx_PrivateRadio_Pattern(line):
+            return "PrivateRadio"
         default:
             return "ME";
     }
@@ -304,6 +326,10 @@ function ConvertToChatView(action, line){
             return `<span class='SMS'> ${line} </span>`;
         case "Phone":
             return `<span class='Phone'> ${line} </span>`;
+        case "NewsRadio":
+            return `<span class='NewsRadio'> ${line} </span>`;
+        case "PrivateRadio":
+            return `<span class='PrivateRadio'> ${line} </span>`;
         default:
             return line;
     }
@@ -390,6 +416,18 @@ function regEx_Megaphone_Pattern(logEntry){
 
 function regEx_Phone_Pattern(logEntry){
     let regex = /^\[Телефон\] ([A-Za-z]+_[A-Za-z]+) \[(\d+)\]: (.+)/;
+    let rez = regex.test(logEntry)
+    return rez;
+}
+
+function regEx_NewsRadio_Pattern(logEntry){
+    let regex = /^\[Радио (LSNEWS|LVNEWS)\] ([A-Za-z]+_[A-Za-z]+): (.+)/;
+    let rez = regex.test(logEntry)
+    return rez;
+}
+
+function regEx_PrivateRadio_Pattern(logEntry){
+    let regex = /^\[R1 F:(1000|[1-9][0-9]{3})\]: ([A-Za-z]+_[A-Za-z]+): (.+)/;
     let rez = regex.test(logEntry)
     return rez;
 }

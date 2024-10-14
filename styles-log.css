@@ -76,6 +76,12 @@ body {
 .Phone{
     color: rgba(255,255,255,1);
 }
+.NewsRadio{
+    color: rgba(222, 60, 60, 1);
+}
+.PrivateRadio{
+    color: rgba(22, 160, 141, 1);
+}
 
 
 .green-button {
