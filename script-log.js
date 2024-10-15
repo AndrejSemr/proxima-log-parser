@@ -1,12 +1,16 @@
 let mainLogJSON = [];
 let ConsoleLogLogPartRegEx = "";
 const CURRENTDATE = new Date();
-let FONTSIZE = 18;
-let ISTEXTBOLD = false;
+let FONTSIZE = 8;
 
-document.getElementById('filterButton').addEventListener('click', ApplyFilters);
-document.getElementById('fontSizeTextButton').addEventListener('click', ApplyFontSize);
-document.getElementById('showBoldCheckbox').addEventListener('change', function(event){MakeTextBold()})
+window.onload = function() {
+    document.getElementById('filterButton').addEventListener('click', ApplyFilters);
+    document.getElementById('fontSizeTextButton').addEventListener('click', ApplyFontSize);
+    document.getElementById('showBoldCheckbox').addEventListener('change', function(event){MakeTextBold()})
+
+    MakeTextBold();
+ };
+
 
 
 function ReadLogFile() {
@@ -221,12 +225,11 @@ function ParseLogGetDateAndText(logEntry,logType) {
     }
 }
 
+
 function MakeTextBold(){
     let checkboxValue = document.getElementById('showBoldCheckbox').checked;
-    if(ISTEXTBOLD == checkboxValue) return;
-    ISTEXTBOLD = checkboxValue;
 
-    if(ISTEXTBOLD){
+    if(checkboxValue){
         document.getElementById('logContainer').style.fontWeight = "bold";
         return;
     }
