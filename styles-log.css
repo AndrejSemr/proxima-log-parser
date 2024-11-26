@@ -33,6 +33,7 @@ body {
 }
 .justText{
     color: rgba(255,255,255,1);
+    filter: contrast(100%) brightness(100%) grayscale(100%);
 }
 .Whisper {
     color: rgba(170,170,170,1);
@@ -45,6 +46,7 @@ body {
 }
 .ToDoText {
     color: rgba(255,255,255,1);
+    filter: contrast(100%) brightness(100%) grayscale(100%);
 }
 .ToDoAction {
     color: rgba(147,112,219,1);
